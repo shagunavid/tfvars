@@ -12,6 +12,36 @@ resource "aws_instance" "exae" {
     command = "echo ${aws_instance.example.public_ip} > ip_address.txt"
   }
 }
+#testing
+resource "aws_s3_bucket" "example" {
+
+  bucket = "terraform-getting-started-guide"
+  acl    = "${var.acl}"
+}
+
+resource "aws_lb" "test" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = ["${aws_security_group.lb_sg.id}"]
+  subnets            = ["${aws_subnet.public.*.id}"]
+
+  enable_deletion_protection = "${var.enable_deletion_protection}"
+
+  access_logs {
+    bucket  = "${aws_s3_bucket.lb_logs.bucket}"
+    prefix  = "test-lb"
+    enabled = true
+  }
+
+  tags {
+    Environment = "production"
+  }
+}
+
+#testing
+
+
 
 resource "aws_iam_account_password_policy" "strict" {
   minimum_password_length        = "${var.minimum_password_length}"
