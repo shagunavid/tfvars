@@ -26,11 +26,12 @@ terragrunt = {
 # ---------------------------------------------------------------------------------------------------------------------
 
 
-
-require_numbers = false
+minimum_password_length = 16
+require_numbers = true
 require_symbols = true
 hard_expiry = true
-max_password_age = 0
+max_password_age = 90
 password_reuse_prevention = 5
 instance_type = "t2.micro"
 arn_name = "some_topic"
+require_lowercase_characters = true
