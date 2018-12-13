@@ -25,7 +25,7 @@ terragrunt = {
 # These variables are expected to be passed in by the operator
 # ---------------------------------------------------------------------------------------------------------------------
 
-
+minimum_password_length = 16
 require_numbers = false
 require_symbols = true
 hard_expiry = true
