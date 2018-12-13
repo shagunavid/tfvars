@@ -22,6 +22,8 @@ resource "aws_iam_account_password_policy" "strict" {
   allow_users_to_change_password = "${var.allow_users_to_change_password}"
 }
 
+
+
 resource "aws_iam_account_password_policy" "strict_2" {
   minimum_password_length        = 16
   require_lowercase_characters   = true
