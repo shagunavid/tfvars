@@ -26,7 +26,7 @@ terragrunt = {
 # ---------------------------------------------------------------------------------------------------------------------
 
 
-minimum_password_length = 16
+
 require_numbers = false
 require_symbols = true
 hard_expiry = true
