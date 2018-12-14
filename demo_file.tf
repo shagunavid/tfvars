@@ -78,9 +78,6 @@ resource "aws_cloudwatch_log_metric_filter" "MFAUsed" {
   }
 }
 
-
-
-
 #Ensure SNS topics do not allow global send or subscribe
 
 resource "aws_sns_topic_policy" "sns_policy" {
