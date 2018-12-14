@@ -41,3 +41,20 @@ max_password_age = 100
 instance_type = "t2.micro"
 arn_name = "some_topic"
 require_lowercase_characters = false
+
+
+
+is_multi_region_trail = true
+cloud_watch_logs_group_arn    = "aws:arn::log-group:someLogGroup:"
+read_write_type = "All"
+include_management_events = true
+
+aws_cloudwatch_log_metric_filter_name = "console-without-mfa"
+pattern        = "{$.eventName = \"ConsoleLogin\"}"
+log_group_name = "someLogGroup"
+metric_transformation_name = "ConsoleWithoutMFACount"
+namespace = "someNamespace"
+value     = "1"	
+	
+
+  
