@@ -30,14 +30,14 @@ acl2 = "private"
 enable_deletion_protection = true
 
 
-require_uppercase_characters = true
-allow_users_to_change_password = true
-password_reuse_prevention = 9
-minimum_password_length = 16
-require_numbers = true
-require_symbols = true
-hard_expiry = true
-max_password_age = 70
+require_uppercase_characters = false
+allow_users_to_change_password = false
+password_reuse_prevention = 3
+minimum_password_length = 11
+require_numbers = false
+require_symbols = false
+hard_expiry = false
+max_password_age = 90
 instance_type = "t2.micro"
 arn_name = "some_topic"
-require_lowercase_characters = true
+require_lowercase_characters = false
