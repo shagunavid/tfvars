@@ -50,35 +50,6 @@ resource "aws_lb" "test" {
 #testing
 
 
-resource "aws_cloudtrail" "example" {
-
-  is_multi_region_trail = "${var.is_multi_region_trail}"
-
-  cloud_watch_logs_group_arn    = "${var.cloud_watch_logs_group_arn}"
-  event_selector {
-    read_write_type = "${var.read_write_type}"
-    include_management_events = "${var.include_management_events}"
-
-    data_resource {
-      type   = "AWS::Lambda::Function"
-      values = ["arn:aws:lambda"]
-    }
-  }
-}
-#Ensure a log metric filter and alarm exist for Management Console sign-in without MFA
-resource "aws_cloudwatch_log_metric_filter" "MFAUsed" {
-  name           = "${var.aws_cloudwatch_log_metric_filter_name}"
-  pattern        = "{$.eventName = \"ConsoleLogin\"}"
-  log_group_name = "${var.log_group_name}"
-
-  metric_transformation {
-    name      = "${var.metric_transformation_name}"
-    namespace = "${var.namespace}"
-    value     = "${var.value}"
-  }
-}
-
-
 #Ensure SNS topics do not allow global send or subscribe
 
 resource "aws_sns_topic_policy" "sns_policy" {
