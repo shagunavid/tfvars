@@ -50,6 +50,20 @@ resource "aws_lb" "test" {
 #testing
 
 
+resource "aws_cloudtrail" "example" {
+
+  is_multi_region_trail = "${var.enable_deletion_protection}"
+  cloud_watch_logs_group_arn    = "${var.enable_deletion_protection}"
+  event_selector {
+    read_write_type = "${var.enable_deletion_protection}"
+    include_management_events = "${var.enable_deletion_protection}"
+    data_resource {
+      type   = "AWS::Lambda::Function"
+      values = ["arn:aws:lambda"]
+    }
+  }
+}
+
 
 
 
