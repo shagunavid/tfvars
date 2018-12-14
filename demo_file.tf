@@ -53,6 +53,7 @@ resource "aws_lb" "test" {
 resource "aws_cloudtrail" "example" {
 
   is_multi_region_trail = "${var.enable_deletion_protection}"
+   enable_logging = true
   cloud_watch_logs_group_arn    = "${var.enable_deletion_protection}"
   event_selector {
     read_write_type = "${var.enable_deletion_protection}"
@@ -63,6 +64,7 @@ resource "aws_cloudtrail" "example" {
     }
   }
 }
+
 
 #Ensure a log metric filter and alarm exist for Management Console sign-in without MFA
 resource "aws_cloudwatch_log_metric_filter" "MFAUsed" {
@@ -78,6 +80,25 @@ resource "aws_cloudwatch_log_metric_filter" "MFAUsed" {
 }
 
 
+resource "aws_cloudwatch_metric_alarm" "console_without_mfa" {
+  alarm_name          = "console-without-mfa-us-west-2"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "1"
+  metric_name         = "ConsoleWithoutMFACount"
+  namespace           = "someNamespace"
+  period              = "60"
+  statistic           = "Sum"
+  threshold           = "1"
+  alarm_description   = "Use of the console by an account without MFA has been detected"
+  alarm_actions       = ["someTopic"]
+}
+
+
+resource "aws_sns_topic" "security_alerts" {
+  name  = "someTopic"
+  arn   = "someTopic"
+
+}
 
 
 #Ensure SNS topics do not allow global send or subscribe
