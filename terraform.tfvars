@@ -53,3 +53,6 @@ log_group_name = "someLogGroup1"
 name1 = "ConsoleWithoutMFACount"
 namespace = "someNamespace"
 value = "1"
+
+
+
