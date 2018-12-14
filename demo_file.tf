@@ -13,11 +13,19 @@ resource "aws_instance" "exae" {
   }
 }
 #testing
+
 resource "aws_s3_bucket" "example" {
 
   bucket = "terraform-getting-started-guide"
   acl    = "${var.acl}"
 }
+
+resource "aws_s3_bucket" "example2" {
+
+  bucket = "mah-bucket"
+  acl    = "${var.acl}"
+}
+
 
 resource "aws_lb" "test" {
   name               = "test-lb-tf"
