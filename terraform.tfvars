@@ -25,15 +25,15 @@ terragrunt = {
 # These variables are expected to be passed in by the operator
 # ---------------------------------------------------------------------------------------------------------------------
 
-acl    = "private"
-  acl    = "private"
+acl1 = "private"
+acl2 = "private"
 enable_deletion_protection = true
 
 minimum_password_length = 16
 require_numbers = true
 require_symbols = true
 hard_expiry = true
-max_password_age = 90
+max_password_age = 91
 password_reuse_prevention = 5
 instance_type = "t2.micro"
 arn_name = "some_topic"
