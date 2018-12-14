@@ -49,7 +49,7 @@ read_write_type = "All"
 include_management_events = true
 
 name = "console-without-mfa"
-log_group_name = "someLogGroup"
+log_group_name = "someLogGroup1"
 name1 = "ConsoleWithoutMFACount"
 namespace = "someNamespace"
 value = "1"
