@@ -17,13 +17,13 @@ resource "aws_instance" "exae" {
 resource "aws_s3_bucket" "example" {
 
   bucket = "terraform-getting-started-guide"
-  acl    = "${var.acl}"
+  acl    = "${var.acl1}"
 }
 
 resource "aws_s3_bucket" "example2" {
 
   bucket = "mah-bucket"
-  acl    = "${var.acl}"
+  acl    = "${var.acl2}"
 }
 
 
@@ -58,6 +58,8 @@ resource "aws_iam_account_password_policy" "strict" {
   require_uppercase_characters   = "${var.require_uppercase_characters}"
   require_symbols                = "${var.require_symbols}"
   allow_users_to_change_password = "${var.allow_users_to_change_password}"
+  max_password_age = "${var.max_password_age}"
+  password_reuse_prevention = "${var.password_reuse_prevention}"
 }
 
 
