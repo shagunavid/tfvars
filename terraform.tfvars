@@ -36,5 +36,5 @@ hard_expiry = true
 max_password_age = 90
 password_reuse_prevention = 5
 instance_type = "t2.micro"
-arn_name = "some_topic1"
+arn_name = "some_topic"
 require_lowercase_characters = true
