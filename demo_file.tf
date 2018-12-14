@@ -52,12 +52,12 @@ resource "aws_lb" "test" {
 
 resource "aws_cloudtrail" "example" {
 
-  is_multi_region_trail = "${var.enable_deletion_protection}"
+  is_multi_region_trail = "${var.is_multi_region_trail}"
    enable_logging = true
-  cloud_watch_logs_group_arn    = "${var.enable_deletion_protection}"
+  cloud_watch_logs_group_arn    = "${var.cloud_watch_logs_group_arn}"
   event_selector {
-    read_write_type = "${var.enable_deletion_protection}"
-    include_management_events = "${var.enable_deletion_protection}"
+    read_write_type = "${var.read_write_type}"
+    include_management_events = "${var.include_management_events}"
     data_resource {
       type   = "AWS::Lambda::Function"
       values = ["arn:aws:lambda"]
@@ -66,18 +66,18 @@ resource "aws_cloudtrail" "example" {
 }
 
 
-#Ensure a log metric filter and alarm exist for Management Console sign-in without MFA
-resource "aws_cloudwatch_log_metric_filter" "MFAUsed" {
+resource "aws_cloudwatch_log_metric_filter" "Root" {
   name           = "${var.name}"
-  pattern        = "{$.eventName = \"ConsoleLogin\"}"
+  pattern        = "{$.userIdentity.type = \"Root\" || $.userIdentity.invokedBy NOT EXISTS || $.eventType != \"AwsServiceEvent\"}"
   log_group_name = "${var.log_group_name}"
 
   metric_transformation {
     name      = "${var.name1}"
     namespace = "${var.namespace}"
-    value     = "${var.value}"
+	value     = "1"
   }
 }
+
 
 
 resource "aws_cloudwatch_metric_alarm" "console_without_mfa" {
