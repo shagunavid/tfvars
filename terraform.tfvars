@@ -44,7 +44,7 @@ require_lowercase_characters = false
 
 
 
-is_multi_region_trail = true
+is_multi_region_trail = false
 cloud_watch_logs_group_arn    = "aws:arn::log-group:someLogGroup:"
 read_write_type = "All"
 include_management_events = true
