@@ -53,7 +53,7 @@ aws_cloudwatch_log_metric_filter_name = "console-without-mfa"
 pattern        = "{$.eventName = \"ConsoleLogin\"}"
 log_group_name = "someLogGroup1"
 metric_transformation_name = "ConsoleWithoutMFACount"
-namespace = "someNamespace"
+namespace = "someNamespace1"
 value     = "1"	
 	
 
