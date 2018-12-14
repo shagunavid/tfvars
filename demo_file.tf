@@ -84,12 +84,12 @@ resource "aws_cloudtrail" "example" {
 
 #Ensure a log metric filter and alarm exist for Management Console sign-in without MFA
 resource "aws_cloudwatch_log_metric_filter" "MFAUsed" {
-  name           = "${var.name}"
+  name           = "${var.aws_cloudwatch_log_metric_filter_name}"
   pattern        = "${var.pattern}"
   log_group_name = "${var.log_group_name}"
 
   metric_transformation {
-    name1      = "${var.name1}"
+    name      = "${var.metric_transformation_name}"
     namespace = "${var.namespace}"
     value     = "${var.value}"
   }
