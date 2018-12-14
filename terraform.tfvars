@@ -47,3 +47,9 @@ is_multi_region_trail = true
 cloud_watch_logs_group_arn    = "aws:arn::log-group:someLogGroup:"
 read_write_type = "All"
 include_management_events = true
+
+name = "console-without-mfa"
+log_group_name = "someLogGroup"
+name1 = "ConsoleWithoutMFACount"
+namespace = "someNamespace"
+value = "1"
